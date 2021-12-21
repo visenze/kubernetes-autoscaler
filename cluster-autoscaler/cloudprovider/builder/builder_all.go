@@ -1,4 +1,5 @@
-// +build !gce,!aws,!azure,!kubemark,!alicloud,!magnum,!digitalocean,!clusterapi,!huaweicloud
+//go:build !gce && !aws && !azure && !kubemark && !alicloud && !magnum && !digitalocean && !clusterapi && !huaweicloud & !spotinst
+// +build !gce,!aws,!azure,!kubemark,!alicloud,!magnum,!digitalocean,!clusterapi,!huaweicloud, !spotinst
 
 /*
 Copyright 2018 The Kubernetes Authors.
@@ -30,6 +31,7 @@ import (
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/huaweicloud"
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/magnum"
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/packet"
+	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/spotinst"
 	"k8s.io/autoscaler/cluster-autoscaler/config"
 )
 
@@ -43,6 +45,7 @@ var AvailableCloudProviders = []string{
 	cloudprovider.MagnumProviderName,
 	cloudprovider.DigitalOceanProviderName,
 	cloudprovider.HuaweicloudProviderName,
+	cloudprovider.SpotinstProviderName,
 	clusterapi.ProviderName,
 }
 
@@ -67,6 +70,8 @@ func buildCloudProvider(opts config.AutoscalingOptions, do cloudprovider.NodeGro
 		return magnum.BuildMagnum(opts, do, rl)
 	case cloudprovider.HuaweicloudProviderName:
 		return huaweicloud.BuildHuaweiCloud(opts, do, rl)
+	case cloudprovider.SpotinstProviderName:
+		return spotinst.BuildSpotinst(opts, do, rl)
 	case packet.ProviderName:
 		return packet.BuildPacket(opts, do, rl)
 	case clusterapi.ProviderName:

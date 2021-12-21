@@ -4,7 +4,7 @@ all: $(addprefix build-arch-,$(ALL_ARCH))
 TAG?=dev
 FLAGS=
 LDFLAGS?=-s
-ENVVAR=CGO_ENABLED=0 GO111MODULE=off
+ENVVAR=CGO_ENABLED=0 GO111MODULE=on
 GOOS?=linux
 GOARCH?=$(shell go env GOARCH)
 REGISTRY?=staging-k8s.gcr.io
@@ -35,7 +35,7 @@ build-binary-arch-%: clean-arch-%
 	$(ENVVAR) GOOS=$(GOOS) GOARCH=$* go build -o cluster-autoscaler-$* ${LDFLAGS_FLAG} ${TAGS_FLAG}
 
 test-unit: clean build
-	GO111MODULE=off go test --test.short -race ./... ${TAGS_FLAG}
+	GO111MODULE=on go test --test.short -race ./... ${TAGS_FLAG}
 
 dev-release: dev-release-arch-$(GOARCH)
 
@@ -47,11 +47,11 @@ make-image: make-image-arch-$(GOARCH)
 make-image-arch-%:
 ifdef BASEIMAGE
 	docker build --pull --build-arg BASEIMAGE=${BASEIMAGE} \
-		-t ${REGISTRY}/cluster-autoscaler${PROVIDER}:${TAG}-$* \
+		-t ${REGISTRY}/cluster-autoscaler${PROVIDER}:${TAG} \
 		-f Dockerfile.$* .
 else
 	docker build --pull \
-		-t ${REGISTRY}/cluster-autoscaler${PROVIDER}:${TAG}-$* \
+		-t ${REGISTRY}/cluster-autoscaler${PROVIDER}:${TAG} \
 		-f Dockerfile.$* .
 endif
 	@echo "Image ${TAG}${FOR_PROVIDER}-$* completed"
@@ -100,6 +100,6 @@ container-arch-%: build-in-docker-arch-% make-image-arch-%
 
 test-in-docker: clean docker-builder
 	docker run -v `pwd`:/gopath/src/k8s.io/autoscaler/cluster-autoscaler/ autoscaling-builder:latest \
-		bash -c 'cd /gopath/src/k8s.io/autoscaler/cluster-autoscaler && GO111MODULE=off go test -race ./... ${TAGS_FLAG}'
+		bash -c 'cd /gopath/src/k8s.io/autoscaler/cluster-autoscaler && go test -race ./... ${TAGS_FLAG}'
 
 .PHONY: all build test-unit clean format execute-release dev-release docker-builder build-in-docker release generate push-image push-manifest

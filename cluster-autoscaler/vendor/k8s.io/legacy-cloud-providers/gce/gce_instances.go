@@ -210,36 +210,6 @@ func (g *Cloud) InstanceShutdownByProviderID(ctx context.Context, providerID str
 	return false, cloudprovider.NotImplemented
 }
 
-// InstanceMetadataByProviderID returns metadata of the specified instance.
-func (g *Cloud) InstanceMetadataByProviderID(ctx context.Context, providerID string) (*cloudprovider.InstanceMetadata, error) {
-	timeoutCtx, cancel := context.WithTimeout(ctx, 1*time.Hour)
-	defer cancel()
-
-	if providerID == "" {
-		return nil, fmt.Errorf("couldn't compute InstanceMetadata for empty providerID")
-	}
-
-	_, zone, name, err := splitProviderID(providerID)
-	if err != nil {
-		return nil, err
-	}
-
-	instance, err := g.c.Instances().Get(timeoutCtx, meta.ZonalKey(canonicalizeInstanceName(name), zone))
-	if err != nil {
-		return nil, fmt.Errorf("error while querying for providerID %q: %v", providerID, err)
-	}
-
-	addresses, err := nodeAddressesFromInstance(instance)
-	if err != nil {
-		return nil, err
-	}
-	return &cloudprovider.InstanceMetadata{
-		ProviderID:    providerID,
-		Type:          lastComponent(instance.MachineType),
-		NodeAddresses: addresses,
-	}, nil
-}
-
 func nodeAddressesFromInstance(instance *compute.Instance) ([]v1.NodeAddress, error) {
 	if len(instance.NetworkInterfaces) < 1 {
 		return nil, fmt.Errorf("could not find network interfaces for instanceID %q", instance.Id)
@@ -528,7 +498,11 @@ func (g *Cloud) getInstancesByNames(names []string) ([]*gceInstance, error) {
 		return nil, err
 	}
 	if len(foundInstances) != len(names) {
-		return nil, cloudprovider.InstanceNotFound
+		if len(foundInstances) == 0 {
+			// return error so the TargetPool nodecount does not drop to 0 unexpectedly.
+			return nil, cloudprovider.InstanceNotFound
+		}
+		klog.Warningf("getFoundInstanceByNames - input instances %d, found %d. Continuing LoadBalancer Update", len(names), len(foundInstances))
 	}
 	return foundInstances, nil
 }

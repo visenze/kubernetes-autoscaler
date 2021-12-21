@@ -45,6 +45,8 @@ const (
 	KubemarkProviderName = "kubemark"
 	// HuaweicloudProviderName gets the provider name of huaweicloud
 	HuaweicloudProviderName = "huaweicloud"
+	// SpotinstProviderName gets the provider name of aws
+	SpotinstProviderName = "spotinst"
 )
 
 // CloudProvider contains configuration info and functions for interacting with
