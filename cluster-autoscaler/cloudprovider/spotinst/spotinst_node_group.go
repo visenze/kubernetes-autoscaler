@@ -17,9 +17,10 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"k8s.io/klog"
 	"regexp"
 	"strings"
+
+	"k8s.io/klog"
 
 	"github.com/spotinst/spotinst-sdk-go/service/elastigroup/providers/aws"
 	"github.com/spotinst/spotinst-sdk-go/spotinst"
@@ -28,8 +29,7 @@ import (
 	schedulerframework "k8s.io/kubernetes/pkg/scheduler/framework/v1alpha1"
 )
 
-
-// Type declaration of spotinst nodegroup
+// Group declaration of spotinst nodegroup
 type Group struct {
 	manager *CloudManager
 	group   *aws.Group
