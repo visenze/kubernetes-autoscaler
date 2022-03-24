@@ -24,6 +24,8 @@ type InstanceType struct {
 	VCPU         int64
 	MemoryMb     int64
 	GPU          int64
+	GPUMemory    int64
+	MPSContext   int64
 }
 
 // InstanceTypes is a map of ec2 resources
