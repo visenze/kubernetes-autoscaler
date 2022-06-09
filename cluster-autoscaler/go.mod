@@ -9,6 +9,7 @@ module k8s.io/autoscaler/cluster-autoscaler
 go 1.15
 
 require (
+	github.com/spotinst/spotinst-sdk-go v1.120.0
 	cloud.google.com/go v0.54.0
 	github.com/Azure/azure-sdk-for-go v43.0.0+incompatible
 	github.com/Azure/go-autorest/autorest v0.11.1
