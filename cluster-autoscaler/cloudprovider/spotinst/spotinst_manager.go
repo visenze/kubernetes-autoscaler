@@ -232,14 +232,6 @@ func (mgr *CloudManager) GetGroupForInstance(instanceID string) (*Group, error) 
 		return group, nil
 	}
 
-	if err := mgr.forceRefresh(); err != nil {
-		return nil, err
-	}
-
-	if group, ok := mgr.cache[instanceID]; ok {
-		return group, nil
-	}
-
 	klog.Warningf("Instance `%s` does not belong to any managed group", instanceID)
 	return nil, nil
 }
