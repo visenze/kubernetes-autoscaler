@@ -232,7 +232,7 @@ func (mgr *CloudManager) GetGroupForInstance(instanceID string) (*Group, error) 
 		return group, nil
 	}
 
-	klog.Warningf("Instance `%s` does not belong to any managed group", instanceID)
+	klog.V(8).Infof("Instance `%s` does not belong to any managed group", instanceID)
 	return nil, nil
 }
 
@@ -327,7 +327,7 @@ func (mgr *CloudManager) refreshGroupNodes(grp *Group) error {
 	for _, instance := range status.Instances {
 		if instance.ID != nil {
 			instanceID := spotinst.StringValue(instance.ID)
-			klog.Infof("Managing AWS instance with ID %s in group %s", instanceID, grp.Id())
+			klog.V(8).Infof("Managing AWS instance with ID %s in group %s", instanceID, grp.Id())
 			mgr.cache[instanceID] = grp
 		}
 	}
