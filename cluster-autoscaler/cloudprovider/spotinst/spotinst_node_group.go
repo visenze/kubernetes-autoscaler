@@ -222,6 +222,6 @@ func extractInstanceId(providerID string) (string, error) {
 	parts := strings.Split(providerID[len(prefix):], "/")
 	instanceID := parts[1]
 
-	klog.Infof("Instance ID `%s` extracted from provider `%s`", instanceID, providerID)
+	klog.V(8).Infof("Instance ID `%s` extracted from provider `%s`", instanceID, providerID)
 	return instanceID, nil
 }
