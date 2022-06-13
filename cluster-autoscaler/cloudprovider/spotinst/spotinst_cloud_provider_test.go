@@ -235,6 +235,9 @@ func TestNodeGroupForNode(t *testing.T) {
 	provider := testCloudProvider(t, testCloudManager(t))
 	err := provider.manager.addNodeGroup("1:5:sig-test")
 	assert.NoError(t, err)
+	
+	provider.Refresh()
+	
 	group, err := provider.NodeGroupForNode(node)
 
 	assert.NoError(t, err)
@@ -315,6 +318,8 @@ func TestBelongs(t *testing.T) {
 	provider := testCloudProvider(t, testCloudManager(t))
 	err := provider.manager.addNodeGroup("1:5:sig-test")
 	assert.NoError(t, err)
+	
+	provider.Refresh()
 
 	invalidNode := &apiv1.Node{
 		Spec: apiv1.NodeSpec{
@@ -339,6 +344,8 @@ func TestDeleteNodes(t *testing.T) {
 	err := provider.manager.addNodeGroup("1:5:sig-test")
 	assert.NoError(t, err)
 	assert.Equal(t, len(provider.manager.groups), 1)
+	
+	provider.Refresh()
 
 	cloud := provider.manager.groupService.CloudProviderAWS().(*awsServiceMock)
 	cloud.On("Detach", context.Background(), &aws.DetachGroupInput{
