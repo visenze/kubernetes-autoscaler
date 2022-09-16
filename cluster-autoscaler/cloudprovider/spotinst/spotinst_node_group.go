@@ -26,6 +26,7 @@ import (
 	"github.com/spotinst/spotinst-sdk-go/spotinst"
 	apiv1 "k8s.io/api/core/v1"
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider"
+	"k8s.io/autoscaler/cluster-autoscaler/config"
 	schedulerframework "k8s.io/kubernetes/pkg/scheduler/framework"
 )
 
