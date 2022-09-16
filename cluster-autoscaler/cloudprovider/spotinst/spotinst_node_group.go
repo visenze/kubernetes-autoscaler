@@ -198,6 +198,10 @@ func (grp *Group) Autoprovisioned() bool {
 	return false
 }
 
+func (grp *Group) GetOptions(defaults config.NodeGroupAutoscalingOptions) (*config.NodeGroupAutoscalingOptions, error) {
+	return nil, cloudprovider.ErrNotImplemented
+}
+
 var (
 	spotinstProviderRE = regexp.MustCompile(`^spotinst\:\/\/\/[-0-9a-z]*\/[-0-9a-z]*$`)
 	awsProviderRE      = regexp.MustCompile(`^aws\:\/\/\/[-0-9a-z]*\/[-0-9a-z]*$`)
