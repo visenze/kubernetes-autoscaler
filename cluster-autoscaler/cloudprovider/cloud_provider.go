@@ -62,6 +62,8 @@ const (
 	OVHcloudProviderName = "ovhcloud"
 	// LinodeProviderName gets the provider name of linode
 	LinodeProviderName = "linode"
+	// SpotinstProviderName gets the provider name of aws
+	SpotinstProviderName = "spotinst"
 )
 
 // CloudProvider contains configuration info and functions for interacting with

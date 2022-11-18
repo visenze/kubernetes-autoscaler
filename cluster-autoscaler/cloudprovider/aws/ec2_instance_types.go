@@ -25,6 +25,8 @@ type InstanceType struct {
 	MemoryMb     int64
 	GPU          int64
 	Architecture string
+	GPUMemory    int64
+	MPSContext   int64
 }
 
 // InstanceTypes is a map of ec2 resources
@@ -1274,6 +1276,8 @@ var InstanceTypes = map[string]*InstanceType{
 		MemoryMb:     262144,
 		GPU:          1,
 		Architecture: "amd64",
+		GPUMemory:    15842934784,
+		MPSContext:   32,
 	},
 	"g4dn.2xlarge": {
 		InstanceType: "g4dn.2xlarge",
@@ -1281,6 +1285,8 @@ var InstanceTypes = map[string]*InstanceType{
 		MemoryMb:     32768,
 		GPU:          1,
 		Architecture: "amd64",
+		GPUMemory:    15842934784,
+		MPSContext:   32,
 	},
 	"g4dn.4xlarge": {
 		InstanceType: "g4dn.4xlarge",
@@ -1288,6 +1294,8 @@ var InstanceTypes = map[string]*InstanceType{
 		MemoryMb:     65536,
 		GPU:          1,
 		Architecture: "amd64",
+		GPUMemory:    15842934784,
+		MPSContext:   32,
 	},
 	"g4dn.8xlarge": {
 		InstanceType: "g4dn.8xlarge",
@@ -1295,6 +1303,8 @@ var InstanceTypes = map[string]*InstanceType{
 		MemoryMb:     131072,
 		GPU:          1,
 		Architecture: "amd64",
+		GPUMemory:    15842934784,
+		MPSContext:   32,
 	},
 	"g4dn.metal": {
 		InstanceType: "g4dn.metal",
@@ -2842,6 +2852,8 @@ var InstanceTypes = map[string]*InstanceType{
 		MemoryMb:     62464,
 		GPU:          1,
 		Architecture: "amd64",
+		GPUMemory:    12000000000, // Rough estimate of 12 GB
+		MPSContext:   16,
 	},
 	"p3": {
 		InstanceType: "p3",
@@ -2863,6 +2875,8 @@ var InstanceTypes = map[string]*InstanceType{
 		MemoryMb:     62464,
 		GPU:          1,
 		Architecture: "amd64",
+		GPUMemory:    16000000000, // Rough estimate of 16 GB
+		MPSContext:   32,
 	},
 	"p3.8xlarge": {
 		InstanceType: "p3.8xlarge",
