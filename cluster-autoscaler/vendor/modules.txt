@@ -4,7 +4,6 @@ cloud.google.com/go/compute/metadata
 # github.com/Azure/azure-sdk-for-go v63.4.0+incompatible
 ## explicit
 github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2019-12-01/compute
-github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2020-12-01/compute
 github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2021-07-01/compute
 github.com/Azure/azure-sdk-for-go/services/containerregistry/mgmt/2019-05-01/containerregistry
 github.com/Azure/azure-sdk-for-go/services/containerservice/mgmt/2020-04-01/containerservice
@@ -540,14 +539,31 @@ github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.5
 ## explicit
 github.com/spf13/pflag
+# github.com/spotinst/spotinst-sdk-go v1.154.0
+## explicit
+github.com/spotinst/spotinst-sdk-go/service/elastigroup
+github.com/spotinst/spotinst-sdk-go/service/elastigroup/providers/aws
+github.com/spotinst/spotinst-sdk-go/service/elastigroup/providers/azure
+github.com/spotinst/spotinst-sdk-go/service/elastigroup/providers/azure/v3
+github.com/spotinst/spotinst-sdk-go/service/elastigroup/providers/gcp
+github.com/spotinst/spotinst-sdk-go/spotinst
+github.com/spotinst/spotinst-sdk-go/spotinst/client
+github.com/spotinst/spotinst-sdk-go/spotinst/credentials
+github.com/spotinst/spotinst-sdk-go/spotinst/featureflag
+github.com/spotinst/spotinst-sdk-go/spotinst/log
+github.com/spotinst/spotinst-sdk-go/spotinst/session
+github.com/spotinst/spotinst-sdk-go/spotinst/util/jsonutil
+github.com/spotinst/spotinst-sdk-go/spotinst/util/stringutil
+github.com/spotinst/spotinst-sdk-go/spotinst/util/uritemplates
+github.com/spotinst/spotinst-sdk-go/spotinst/util/useragent
 # github.com/storageos/go-api v2.2.0+incompatible
 github.com/storageos/go-api
 github.com/storageos/go-api/netutil
 github.com/storageos/go-api/serror
 github.com/storageos/go-api/types
-# github.com/stretchr/objx v0.2.0
+# github.com/stretchr/objx v0.5.0
 github.com/stretchr/objx
-# github.com/stretchr/testify v1.7.1
+# github.com/stretchr/testify v1.8.1
 ## explicit
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/mock
@@ -884,6 +900,8 @@ gopkg.in/gcfg.v1/token
 gopkg.in/gcfg.v1/types
 # gopkg.in/inf.v0 v0.9.1
 gopkg.in/inf.v0
+# gopkg.in/ini.v1 v1.67.0
+gopkg.in/ini.v1
 # gopkg.in/natefinch/lumberjack.v2 v2.0.0
 gopkg.in/natefinch/lumberjack.v2
 # gopkg.in/warnings.v0 v0.1.1
@@ -891,7 +909,7 @@ gopkg.in/warnings.v0
 # gopkg.in/yaml.v2 v2.4.0
 ## explicit
 gopkg.in/yaml.v2
-# gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+# gopkg.in/yaml.v3 v3.0.1
 gopkg.in/yaml.v3
 # k8s.io/api v0.23.5 => k8s.io/api v0.23.0
 ## explicit
