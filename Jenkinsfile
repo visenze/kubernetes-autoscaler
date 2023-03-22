@@ -105,7 +105,7 @@ pipeline {
                   string(name: 'SOURCE_DOCKER_REGISTRY_CREDENTIAL', value: "docker-hub-credential"),
                   string(name: 'DEST_DOCKER_REGISTRY', value: "https://741813507711.dkr.ecr.cn-northwest-1.amazonaws.com.cn"),
                   string(name: 'DEST_DOCKER_REGISTRY_CREDENTIAL', value: "ecr:cn-northwest-1:aws-cn-jenkins"),
-                  string(name: 'AGENT_LABEL', value: "pod"),
+                  string(name: 'AGENT_LABEL', value: "build"),
               ])
             }
           }
