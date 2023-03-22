@@ -72,6 +72,8 @@ const (
 	PacketProviderName = "packet"
 	// TencentcloudProviderName gets the provider name of tencentcloud
 	TencentcloudProviderName = "tencentcloud"
+	// SpotinstProviderName gets the provider name of aws
+	SpotinstProviderName = "spotinst"
 )
 
 // CloudProvider contains configuration info and functions for interacting with
