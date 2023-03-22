@@ -39,6 +39,7 @@ import (
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/magnum"
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/ovhcloud"
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/packet"
+    "k8s.io/autoscaler/cluster-autoscaler/cloudprovider/spotinst"
 	"k8s.io/autoscaler/cluster-autoscaler/config"
 )
 
@@ -62,6 +63,7 @@ var AvailableCloudProviders = []string{
 	cloudprovider.BizflyCloudProviderName,
 	cloudprovider.BrightboxProviderName,
 	cloudprovider.PacketProviderName,
+	cloudprovider.SpotinstProviderName,
 }
 
 // DefaultCloudProvider is GCE.
@@ -105,6 +107,8 @@ func buildCloudProvider(opts config.AutoscalingOptions, do cloudprovider.NodeGro
 		return ionoscloud.BuildIonosCloud(opts, do, rl)
 	case cloudprovider.LinodeProviderName:
 		return linode.BuildLinode(opts, do, rl)
+    case cloudprovider.SpotinstProviderName:
+        return spotinst.BuildSpotinst(opts, do, rl)
 	}
 	return nil
 }

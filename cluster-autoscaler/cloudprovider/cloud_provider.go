@@ -66,6 +66,8 @@ const (
 	LinodeProviderName = "linode"
 	// PacketProviderName gets the provider name of packet
 	PacketProviderName = "packet"
+    // SpotinstProviderName gets the provider name of aws
+    SpotinstProviderName = "spotinst"
 )
 
 // CloudProvider contains configuration info and functions for interacting with
