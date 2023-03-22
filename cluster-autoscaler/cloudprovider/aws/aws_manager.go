@@ -43,6 +43,8 @@ import (
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/aws/aws-sdk-go/service/eks"
 	"k8s.io/autoscaler/cluster-autoscaler/config"
 	"k8s.io/autoscaler/cluster-autoscaler/utils/gpu"
+    "k8s.io/autoscaler/cluster-autoscaler/utils/gpumemory"
+    "k8s.io/autoscaler/cluster-autoscaler/utils/mpscontext"
 	klog "k8s.io/klog/v2"
 	provider_aws "k8s.io/legacy-cloud-providers/aws"
 )
@@ -405,6 +407,8 @@ func (m *AwsManager) buildNodeFromTemplate(asg *asg, template *asgTemplate) (*ap
 	node.Status.Capacity[apiv1.ResourceCPU] = *resource.NewQuantity(template.InstanceType.VCPU, resource.DecimalSI)
 	node.Status.Capacity[gpu.ResourceNvidiaGPU] = *resource.NewQuantity(template.InstanceType.GPU, resource.DecimalSI)
 	node.Status.Capacity[apiv1.ResourceMemory] = *resource.NewQuantity(template.InstanceType.MemoryMb*1024*1024, resource.DecimalSI)
+    node.Status.Capacity[gpumemory.ResourceVisenzeGPUMemory] = *resource.NewQuantity(template.InstanceType.GPUMemory, resource.DecimalSI)
+    node.Status.Capacity[mpscontext.ResourceVisenzeMPSContext] = *resource.NewQuantity(template.InstanceType.MPSContext, resource.DecimalSI)
 
 	if err := m.updateCapacityWithRequirementsOverrides(&node.Status.Capacity, asg.MixedInstancesPolicy); err != nil {
 		return nil, err
