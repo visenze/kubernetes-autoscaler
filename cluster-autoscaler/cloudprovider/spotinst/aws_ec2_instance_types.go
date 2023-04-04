@@ -1319,6 +1319,8 @@ var InstanceTypes = map[string]*instanceType{
 		MemoryMb:     16384,
 		GPU:          1,
 		Architecture: "amd64",
+		GPUMemory:    15842934784,
+		MPSContext:   32,
 	},
 	"g5": {
 		InstanceType: "g5",
