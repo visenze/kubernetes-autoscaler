@@ -15,7 +15,7 @@ WORKDIR /gopath/src/k8s.io/autoscaler/cluster-autoscaler
 ADD . .
 RUN go build -o cluster-autoscaler
 
-FROM gcr.io/distroless/static:latest
+FROM alpine
 
-COPY --from=build /gopath/src/k8s.io/autoscaler/cluster-autoscaler/cluster-autoscaler /
+COPY --from=build /gopath/src/k8s.io/autoscaler/cluster-autoscaler/cluster-autoscaler .
 CMD ["/cluster-autoscaler"]
