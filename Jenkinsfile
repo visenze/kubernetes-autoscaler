@@ -5,7 +5,7 @@ library(identifier: "visenze-lib@${params['VISENZE_LIB_BRANCH'] ?: 'master'}", c
 
 pipeline {
   agent {
-    label "build-arm64"
+    label "build-amd64"
   }
 
   options {
