@@ -13,9 +13,9 @@ RUN godep version
 
 WORKDIR /gopath/src/k8s.io/autoscaler/cluster-autoscaler
 ADD . .
-RUN go build -o cluster-autoscaler
+RUN CGO_ENABLED=0 GOOS=linux go build -o cluster-autoscaler --ldflags "-s"
 
 FROM alpine
+COPY --from=build /gopath/src/k8s.io/autoscaler/cluster-autoscaler/cluster-autoscaler /
 
-COPY --from=build /gopath/src/k8s.io/autoscaler/cluster-autoscaler/cluster-autoscaler .
-CMD ["/cluster-autoscaler"]
+CMD ["./cluster-autoscaler"]
