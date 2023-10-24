@@ -582,6 +582,23 @@ github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.5
 ## explicit; go 1.12
 github.com/spf13/pflag
+# github.com/spotinst/spotinst-sdk-go v1.181.0
+## explicit; go 1.20
+github.com/spotinst/spotinst-sdk-go/service/elastigroup
+github.com/spotinst/spotinst-sdk-go/service/elastigroup/providers/aws
+github.com/spotinst/spotinst-sdk-go/service/elastigroup/providers/azure
+github.com/spotinst/spotinst-sdk-go/service/elastigroup/providers/azure/v3
+github.com/spotinst/spotinst-sdk-go/service/elastigroup/providers/gcp
+github.com/spotinst/spotinst-sdk-go/spotinst
+github.com/spotinst/spotinst-sdk-go/spotinst/client
+github.com/spotinst/spotinst-sdk-go/spotinst/credentials
+github.com/spotinst/spotinst-sdk-go/spotinst/featureflag
+github.com/spotinst/spotinst-sdk-go/spotinst/log
+github.com/spotinst/spotinst-sdk-go/spotinst/session
+github.com/spotinst/spotinst-sdk-go/spotinst/util/jsonutil
+github.com/spotinst/spotinst-sdk-go/spotinst/util/stringutil
+github.com/spotinst/spotinst-sdk-go/spotinst/util/uritemplates
+github.com/spotinst/spotinst-sdk-go/spotinst/util/useragent
 # github.com/stretchr/objx v0.5.0
 ## explicit; go 1.12
 github.com/stretchr/objx
@@ -965,6 +982,9 @@ gopkg.in/gcfg.v1/types
 # gopkg.in/inf.v0 v0.9.1
 ## explicit
 gopkg.in/inf.v0
+# gopkg.in/ini.v1 v1.67.0
+## explicit
+gopkg.in/ini.v1
 # gopkg.in/natefinch/lumberjack.v2 v2.0.0
 ## explicit
 gopkg.in/natefinch/lumberjack.v2
