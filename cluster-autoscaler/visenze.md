@@ -40,7 +40,7 @@ spec:
               # visenze.com/nvidia-mps-context: 20
               # nvidia.com/gpu: 1
 ```
-2. Or you can use the the files `test-ca.sh` and `gpu-deploy-tmpl.yaml` in [scripts](cluster-autoscaler/scripts) folder to test it automatically
+2. Or you can use the the files `test-ca.sh` and `gpu-deploy-tmpl.yaml` in [scripts](scripts) folder to test it automatically
 
 #Note
 * If it can work, then generate and commit a new patch for the next version upgrade. The command to generate the patch:
