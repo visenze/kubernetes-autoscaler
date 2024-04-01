@@ -76,15 +76,6 @@ pipeline {
               sh("docker buildx create --use")
               sh("docker buildx build -t visenze/cluster-autoscaler:${version} --push --platform linux/arm64,linux/amd64 .")
             }
-
-            build(job: 'devops_docker_registry_copy_image', parameters: [
-                string(name: 'REPOSITORY', value: "visenze/cluster-autoscaler"),
-                string(name: 'DOCKER_TAG', value: version),
-                string(name: 'TIMEOUT', value: "30"),
-                string(name: 'SOURCE_DOCKER_REGISTRY_CREDENTIAL', value: "docker-hub-credential"),
-                string(name: 'DEST_DOCKER_REGISTRY', value: "https://741813507711.dkr.ecr.cn-northwest-1.amazonaws.com.cn"),
-                string(name: 'DEST_DOCKER_REGISTRY_CREDENTIAL', value: "ecr:cn-northwest-1:aws-cn-jenkins"),
-            ])
           }
         }
       }
