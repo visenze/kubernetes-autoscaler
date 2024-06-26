@@ -1,4 +1,4 @@
-FROM golang:1.19.13 AS build
+FROM golang:1.20.14 AS build
 
 ARG TARGETARCH
 ENV GOPATH /gopath/
