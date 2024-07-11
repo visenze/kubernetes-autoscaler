@@ -49,6 +49,7 @@ import (
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/tencentcloud"
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/volcengine"
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/vultr"
+	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider/spotinst"
 	"k8s.io/autoscaler/cluster-autoscaler/config"
 )
 
@@ -143,6 +144,8 @@ func buildCloudProvider(opts config.AutoscalingOptions, do cloudprovider.NodeGro
 		return scaleway.BuildScaleway(opts, do, rl)
 	case cloudprovider.RancherProviderName:
 		return rancher.BuildRancher(opts, do, rl)
+	case cloudprovider.SpotinstProviderName:
+		return spotinst.BuildSpotinst(opts, do, rl)
 	case cloudprovider.VolcengineProviderName:
 		return volcengine.BuildVolcengine(opts, do, rl)
 	}

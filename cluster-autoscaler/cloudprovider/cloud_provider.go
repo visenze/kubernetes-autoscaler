@@ -86,6 +86,8 @@ const (
 	CivoProviderName = "civo"
 	// RancherProviderName gets the provider name of rancher
 	RancherProviderName = "rancher"
+	// SpotinstProviderName gets the provider name of aws
+	SpotinstProviderName = "spotinst"
 )
 
 // GpuConfig contains the label, type and the resource name for a GPU.

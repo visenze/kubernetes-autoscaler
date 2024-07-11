@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpu-pod
+  labels:
+    app: gpu-pod
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: gpu-pod
+  template:
+    metadata:
+      labels:
+        app: gpu-pod
+    spec:
+      nodeSelector:
+        visenze.component: search
+      containers:
+        - name: digits-container
+          image: nvcr.io/nvidia/digits:20.12-tensorflow-py3
+          command:
+          - sleep
+          - infinity
+          resources:
+            limits:
