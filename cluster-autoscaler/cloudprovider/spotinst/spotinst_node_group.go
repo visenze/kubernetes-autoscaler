@@ -70,6 +70,11 @@ func (grp *Group) IncreaseSize(delta int) error {
 	return grp.manager.SetGroupSize(grp, size+int64(delta))
 }
 
+// AtomicIncreaseSize is not implemented.
+func (ng *AwsNodeGroup) AtomicIncreaseSize(delta int) error {
+	return cloudprovider.ErrNotImplemented
+}
+
 // DeleteNodes deletes nodes from this node group.
 func (grp *Group) DeleteNodes(nodes []*apiv1.Node) error {
 	size, err := grp.manager.GetGroupSize(grp)
