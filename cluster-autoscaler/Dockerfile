@@ -8,7 +8,7 @@ ENV GOARCH ${TARGETARCH}
 
 RUN apt-get update && apt-get --yes install libseccomp-dev
 RUN go version
-RUN go get github.com/tools/godep
+RUN go install github.com/tools/godep@v80
 RUN godep version
 
 WORKDIR /gopath/src/k8s.io/autoscaler/cluster-autoscaler
