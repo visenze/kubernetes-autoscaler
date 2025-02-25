@@ -71,7 +71,7 @@ func (grp *Group) IncreaseSize(delta int) error {
 }
 
 // AtomicIncreaseSize is not implemented.
-func (ng *AwsNodeGroup) AtomicIncreaseSize(delta int) error {
+func (grp *Group) AtomicIncreaseSize(delta int) error {
 	return cloudprovider.ErrNotImplemented
 }
 
