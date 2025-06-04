@@ -25,6 +25,8 @@ type InstanceType struct {
 	MemoryMb     int64
 	GPU          int64
 	Architecture string
+	GPUMemory    int64
+	MPSContext   int64
 }
 
 // StaticListLastUpdateTime is a string declaring the last time the static list was updated.
