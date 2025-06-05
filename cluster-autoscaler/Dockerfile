@@ -1,14 +1,14 @@
-FROM golang:1.22.4 AS build
+FROM golang:1.23.2 AS build
 
 ARG TARGETARCH
-ENV GOPATH /gopath/
-ENV PATH $GOPATH/bin:$PATH
-ENV GO111MODULE auto
-ENV GOARCH ${TARGETARCH}
+ENV GOPATH=/gopath/
+ENV PATH=$GOPATH/bin:$PATH
+ENV GO111MODULE=auto
+ENV GOARCH=${TARGETARCH}
 
 RUN apt-get update && apt-get --yes install libseccomp-dev
 RUN go version
-RUN go get github.com/tools/godep
+RUN go install github.com/tools/godep@latest
 RUN godep version
 
 WORKDIR /gopath/src/k8s.io/autoscaler/cluster-autoscaler
