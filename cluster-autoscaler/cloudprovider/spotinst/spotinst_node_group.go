@@ -27,7 +27,8 @@ import (
 	apiv1 "k8s.io/api/core/v1"
 	"k8s.io/autoscaler/cluster-autoscaler/cloudprovider"
 	"k8s.io/autoscaler/cluster-autoscaler/config"
-	schedulerframework "k8s.io/autoscaler/cluster-autoscaler/simulator/framework"
+	//schedulerframework "k8s.io/kubernetes/pkg/scheduler/framework"
+	"k8s.io/autoscaler/cluster-autoscaler/simulator/framework"
 )
 
 // Group declaration of spotinst nodegroup
@@ -154,7 +155,7 @@ func (grp *Group) Nodes() ([]cloudprovider.Instance, error) {
 }
 
 // TemplateNodeInfo returns a node template for this node group.
-func (grp *Group) TemplateNodeInfo() (*schedulerframework.NodeInfo, error) {
+func (grp *Group) TemplateNodeInfo() (*framework.NodeInfo, error) {
 	klog.Infof("No working nodes in node group %s, trying to generate from template", grp.Id())
 
 	template, err := grp.manager.buildGroupTemplate(grp.Id())
@@ -167,8 +168,7 @@ func (grp *Group) TemplateNodeInfo() (*schedulerframework.NodeInfo, error) {
 		return nil, err
 	}
 
-	nodeInfo := schedulerframework.NewNodeInfo(cloudprovider.BuildKubeProxy(grp.Id()))
-	nodeInfo.SetNode(node)
+	nodeInfo := framework.NewNodeInfo(node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(grp.Id())})
 	return nodeInfo, nil
 }
 
